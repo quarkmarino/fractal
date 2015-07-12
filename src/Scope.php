@@ -253,8 +253,8 @@ class Scope
         if ($this->resource instanceof Item) {
             list($transformedData, $includedData[]) = $this->fireTransformer($transformer, $data);
         } elseif ($this->resource instanceof Collection) {
-            foreach ($data as $value) {
-                list($transformedData[], $includedData[]) = $this->fireTransformer($transformer, $value);
+            foreach ($data as $key => $value) {
+                list($transformedData[$key], $includedData[]) = $this->fireTransformer($transformer, $value);
             }
         } else {
             throw new InvalidArgumentException(
